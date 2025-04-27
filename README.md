@@ -1,37 +1,53 @@
-#📈 Indian Stock Market Analysis Dashboard
+# Indian Stock Market Analysis Dashboard
+
 Welcome to the Indian Stock Market Analysis project! 🚀
 This interactive web app allows you to view live stock data, key financial metrics, and even simple price predictions for any NSE-listed company using just their ticker symbol (like RELIANCE.NS, TCS.NS, INFY.NS, etc.).
 
 Built using Python, Dash, Plotly, and yFinance, the app provides a clean, real-time dashboard experience — perfect for both casual investors and data enthusiasts!
-
-✨ Features
-🔎 Live Stock Data
+## ✨ Features
+### 🔎 Live Stock Data
 Fetches real-time stock information including open, close, high, low prices and volume.
 
-📊 Interactive Graphs
+### 📊 Interactive Graphs
 View daily closing prices and intraday 5-minute close data with beautiful, responsive charts.
 
-🧮 Fundamental Analysis
+### 🧮 Fundamental Analysis
 Displays key company fundamentals like P/E ratio, EPS, Dividend Yield, Sector, Industry, and Market Cap.
 
-📈 Quarterly Financials
+### 📈 Quarterly Financials
 Shows a snapshot of the latest quarterly financial performance (Total Revenue, Gross Profit, Net Income, EBITDA).
 
-🧠 Simple Future Price Prediction
+### 🧠 Simple Future Price Prediction
 A lightweight linear regression model predicts the closing price for the next 5 days based on past data.
 
-🌐 Auto-Launch Browser
+### 🌐 Auto-Launch Browser
 The app automatically opens in your default web browser when you run it!
 
-🛠️ Tech Stack
-Python (Backend & ML Prediction)
 
-Dash & Dash Bootstrap Components (Frontend Framework)
+## 🛠️ Tech Stack
+**Python (Backend & ML Prediction)**
 
-Plotly (Interactive Graphs)
+**Dash & Dash Bootstrap Components (Frontend Framework)**
 
-yFinance (Stock Market Data Fetching)
+**Plotly (Interactive Graphs)**
 
-Scikit-learn (Simple Linear Regression Model)
+**yFinance (Stock Market Data Fetching)**
 
-Pandas & NumPy (Data Processing)
+**Scikit-learn (Simple Linear Regression Model)**
+
+**Pandas & NumPy (Data Processing)**
+
+## 📸 Screenshots
+
+![Reliance Stock Graph](https://github.com/user-attachments/assets/70e039b7-9f9b-4421-b9dd-9519244e0f9e)
+
+![Reliance Stock Graph](https://github.com/user-attachments/assets/ea8e1165-36ca-4c45-936c-27e700132dda)
+
+![Reliance Stock Graph](https://github.com/user-attachments/assets/7fa2d138-691b-42cd-8a10-0282e9f4a86c)
+
+
+# Happy Investing! 📈🚀
+
+
+
+
