@@ -39,9 +39,8 @@ This dashboard is powered by some of the most robust technologies:
 
 ## 📸 Dashboard Previews
 Here’s a sneak peek of the dashboard in action:  
-![Reliance Stock Graph](https://github.com/user-attachments/assets/70e039b7-9f9b-4421-b9dd-9519244e0f9e)  
-![Reliance Stock Graph](https://github.com/user-attachments/assets/ea8e1165-36ca-4c45-936c-27e700132dda)  
-![Reliance Stock Graph](https://github.com/user-attachments/assets/7fa2d138-691b-42cd-8a10-0282e9f4a86c)
+![Screenshot 2025-05-02 135913](https://github.com/user-attachments/assets/572aa658-e85c-4a7a-a093-3f3208496950)
+![Screenshot 2025-05-02 135942](https://github.com/user-attachments/assets/682de11f-96bd-41f0-b295-1c19eee4e9d8)
 
 ---
 
