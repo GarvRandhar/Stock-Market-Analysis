@@ -67,17 +67,17 @@ This dashboard is powered by robust technologies:
 
 ---
 
-## 📸 Dashboard Previews
+# 📸 Dashboard Previews
 
 Here's a sneak peek of the dashboard in action:
 
-# Dashboard Overview - Stock Selection and Price History
+## Dashboard Overview - Stock Selection and Price History
 <img width="1469" height="838" alt="Screenshot 2026-02-03 at 8 44 40 PM" src="https://github.com/user-attachments/assets/1d57140a-49fc-49db-93e6-3fcc43e5e284" />
 
-# Intraday Performance and Financial Details
+## Intraday Performance and Financial Details
 <img width="1469" height="838" alt="Screenshot 2026-02-03 at 8 45 09 PM" src="https://github.com/user-attachments/assets/d8ab4ab5-af1b-498d-ab94-7eee52d3ee5a" />
 
-# Stock Comparison and Comprehensive Financials
+## Stock Comparison and Comprehensive Financials
 <img width="1469" height="838" alt="Screenshot 2026-02-03 at 8 45 20 PM" src="https://github.com/user-attachments/assets/d045fb6c-e6c3-402c-9bfa-1a5315ae2134" />
 
 ---
