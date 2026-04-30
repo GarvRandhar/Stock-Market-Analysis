@@ -1,143 +1,119 @@
-# 📈 StockVision - Indian Market Analysis
+# StockVision
 
-Welcome to **StockVision** – your comprehensive platform for real-time Indian stock market analysis and prediction! 📊✨  
-Dive into live stock data, explore technical indicators, analyze fundamental metrics, and get AI-powered price predictions – all in one sleek, interactive web dashboard. Just enter the NSE ticker symbol (e.g., `RELIANCE.NS`, `TCS.NS`, `ICICIBANK.NS`) to get started!
+A professional-grade stock analysis dashboard for the Indian market (NSE). Built for analysts and traders who need real-time data, technical indicators, financial statements, and price predictions in a single interface.
 
----
-
-## 🌟 Key Features
-
-### 🔎 **Live Stock Data & Today's Snapshot**
-- Fetch real-time market stats including Open, Close, High, Low prices, and Volume
-- View today's price change percentage with color-coded indicators
-- Quick access to current stock price with exchange badge (NSE)
-
-### 📊 **Interactive Charts with Technical Indicators**
-- **Price History with Moving Averages**: View closing prices with SMA 20 and SMA 50 overlays
-- **RSI (Relative Strength Index)**: Analyze momentum with overbought/oversold zones
-- **Bollinger Bands**: Visualize price volatility and potential breakouts
-- **Customizable Time Periods**: Switch between 1 Week, 1 Month, 3 Months, and 1 Year views
-
-### 📈 **Intraday Performance**
-- Real-time candlestick charts with 5-minute intervals
-- Track today's price movements throughout the trading day
-
-### ⚖️ **Stock Comparison**
-- Compare any two stocks side by side
-- Percentage change comparison for better relative analysis
-
-### 🧮 **Company Fundamentals**
-- P/E Ratio, EPS, Dividend Yield
-- Market Cap, Sector, and Industry classification
-
-### 📑 **Comprehensive Financial Analysis**
-- **Balance Sheet**: Total Assets, Liabilities, Stockholders Equity, Cash & Equivalents
-- **Cash Flow**: Operating, Investing, Financing Cash Flow, Free Cash Flow
-- **Income Statement**: Total Revenue, Cost of Revenue, Gross Profit, Operating Income, Net Income
-- **Key Financial Ratios**: Profit Margin, Operating Margin, ROA, ROE, Debt to Equity, Current Ratio
-
-### 📈 **Quarterly Financial Insights**
-- Latest quarterly performance: Total Revenue, Gross Profit, Net Income, EBITDA, Operating Income
-
-### 🤖 **AI Price Predictions**
-- Predict the next 5 trading days' closing prices using machine learning (Linear Regression)
-- Visual trend indicators for predicted price movements
-
-### 🔄 **Auto-Refresh & Quick Access**
-- Auto-refresh data every 5 minutes
-- Popular stocks quick selection (Reliance, TCS, HDFC Bank, Infosys, ICICI Bank)
-- Manual refresh button for instant data updates
+![Dashboard Overview](screenshots/dashboard_overview.png)
 
 ---
 
-## 🛠️ Built With
+## Features
 
-This dashboard is powered by robust technologies:
+### Market Data
+- **Live Quotes** — Current price, OHLC, volume, and percentage change for any NSE-listed stock
+- **Intraday Charts** — 5-minute interval candlestick charts for today's trading session
+- **Configurable Timeframes** — Switch between 1W, 1M, 3M, and 1Y historical views
 
-| Technology | Purpose |
-|------------|---------|
-| **Python** | Backend logic and ML predictions |
-| **Dash & Dash Bootstrap Components** | Interactive UI framework |
-| **Plotly** | Beautiful, interactive charts |
-| **yFinance** | Live stock market data |
-| **Scikit-learn** | Machine learning predictions |
-| **Pandas & NumPy** | Efficient data processing |
-| **TextBlob** | Sentiment analysis |
-| **BeautifulSoup** | Web scraping utilities |
+### Technical Analysis
+- **Price History with Moving Averages** — SMA 20 and SMA 50 overlaid on closing price
+- **RSI (Relative Strength Index)** — Momentum oscillator with overbought/oversold reference zones
+- **Bollinger Bands** — Volatility bands with standard deviation-based upper/lower bounds
+- **Stock Comparison** — Normalized percentage-change comparison between any two tickers
 
----
+### Fundamentals & Financials
+- **Company Fundamentals** — P/E ratio, EPS, dividend yield, market cap, sector, and industry
+- **Quarterly Results** — Revenue, gross profit, net income, EBITDA, and operating income
+- **Balance Sheet** — Total assets, liabilities, stockholders' equity, and cash position
+- **Cash Flow Statement** — Operating, investing, financing cash flows, and free cash flow
+- **Income Statement** — Revenue, COGS, gross profit, operating income, and net income
+- **Key Ratios** — Profit margin, operating margin, ROA, ROE, D/E ratio, current ratio
 
-# 📸 Dashboard Previews
+### Predictions
+- **5-Day Price Forecast** — Linear regression-based predictions for the next five trading days with trend indicators
 
-Here's a sneak peek of the dashboard in action:
-
-## Dashboard Overview - Stock Selection and Price History
-<img width="1469" height="838" alt="Screenshot 2026-02-03 at 8 44 40 PM" src="https://github.com/user-attachments/assets/1d57140a-49fc-49db-93e6-3fcc43e5e284" />
-
-## Intraday Performance and Financial Details
-<img width="1469" height="838" alt="Screenshot 2026-02-03 at 8 45 09 PM" src="https://github.com/user-attachments/assets/d8ab4ab5-af1b-498d-ab94-7eee52d3ee5a" />
-
-## Stock Comparison and Comprehensive Financials
-<img width="1469" height="838" alt="Screenshot 2026-02-03 at 8 45 20 PM" src="https://github.com/user-attachments/assets/d045fb6c-e6c3-402c-9bfa-1a5315ae2134" />
+![Dashboard Financials](screenshots/dashboard_financials.png)
 
 ---
 
-## 🚀 Getting Started
+## Tech Stack
 
-Follow these simple steps to set up and run the app:
-
-1. **Clone the Repository**:
-    ```bash
-    git clone https://github.com/GarvRandhar/Stock-Market-Analysis.git
-    cd Stock-Market-Analysis
-    ```
-
-2. **Install Dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3. **Launch the Application**:
-    ```bash
-    python project.py
-    ```
-
-4. **Enjoy the Dashboard**:
-    The app will open in your default browser automatically at `http://127.0.0.1:8050` 🎉
+| Component | Technology |
+|-----------|-----------|
+| Framework | Dash + Dash Bootstrap Components |
+| Charts | Plotly |
+| Data | yfinance (Yahoo Finance API) |
+| ML | scikit-learn (Linear Regression) |
+| Processing | pandas, NumPy |
+| NLP | TextBlob |
+| Scraping | BeautifulSoup4, Requests |
 
 ---
 
-## 📋 Requirements
+## Getting Started
+
+### Prerequisites
 
 - Python 3.8+
-- Active internet connection for fetching live stock data
+- Active internet connection (for live market data)
+
+### Installation
+
+```bash
+git clone https://github.com/GarvRandhar/Stock-Market-Analysis.git
+cd Stock-Market-Analysis
+pip install -r requirements.txt
+```
+
+### Usage
+
+```bash
+python project.py
+```
+
+The dashboard opens automatically at `http://127.0.0.1:8051`.
+
+Enter any NSE ticker (e.g., `RELIANCE.NS`, `TCS.NS`, `ICICIBANK.NS`) and click **Analyze**.
 
 ---
 
-## 🤝 Contributions
+## Project Structure
 
-We welcome contributions! Whether it's fixing bugs, improving visuals, or adding new features:
+```
+Stock-Market-Analysis/
+├── project.py          # Main application (layout, callbacks, ML logic)
+├── requirements.txt    # Python dependencies
+├── screenshots/        # Dashboard screenshots
+├── LICENSE             # MIT License
+└── README.md
+```
+
+---
+
+## Design
+
+The interface uses a neutral zinc-based dark theme optimized for extended use and data density:
+
+- **Background**: `#111113` with `#18181b` card surfaces
+- **Typography**: Inter font family, compact sizing
+- **Data Tables**: Two-column label-value layout without decorative icons
+- **Charts**: Minimal chrome, muted grid lines, clean hover labels
+- **Color Signals**: Green/red reserved exclusively for positive/negative data indicators
+
+---
+
+## Auto-Refresh
+
+The dashboard automatically refreshes market data every 5 minutes. Use the **Refresh** button for manual updates at any time.
+
+---
+
+## Contributing
 
 1. Fork the repository
-2. Create a feature branch:
-    ```bash
-    git checkout -b feature-name
-    ```
-3. Commit your changes and submit a pull request
+2. Create a feature branch (`git checkout -b feature-name`)
+3. Commit changes and open a pull request
 
 ---
 
-## ⭐ Support & Feedback
+## License
 
-If you find this project useful, don't forget to leave a **⭐ star**!  
-Your feedback and support drive future improvements. Feel free to open issues for suggestions or bug reports.
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-# 💹 Happy Investing! 📉📊📈
+MIT — see [LICENSE](LICENSE) for details.

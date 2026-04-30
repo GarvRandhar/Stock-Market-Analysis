@@ -94,12 +94,12 @@ def get_sentiment_label(sentiment_score):
 
 
 external_stylesheets = [
-    dbc.themes.DARKLY,  
+    dbc.themes.DARKLY,
     "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 ]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-app.title = "StockVision - Indian Market Analysis"
+app.title = "StockVision — Indian Market Analysis"
 
 app.index_string = '''
 <!DOCTYPE html>
@@ -110,162 +110,86 @@ app.index_string = '''
         {%favicon%}
         {%css%}
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-            
-            * {
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            }
-            
-            body {
-                background: linear-gradient(135deg, #0F0F1E 0%, #1A1A2E 100%);
-                scroll-behavior: smooth;
-            }
-            
-            /* Custom scrollbar */
-            ::-webkit-scrollbar {
-                width: 10px;
-                height: 10px;
-            }
-            
-            ::-webkit-scrollbar-track {
-                background: rgba(30, 30, 46, 0.3);
-                border-radius: 10px;
-            }
-            
-            ::-webkit-scrollbar-thumb {
-                background: linear-gradient(135deg, #6366F1, #8B5CF6);
-                border-radius: 10px;
-            }
-            
-            ::-webkit-scrollbar-thumb:hover {
-                background: linear-gradient(135deg, #8B5CF6, #6366F1);
-            }
-            
-            /* Card hover effects */
-            .card {
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            }
-            
-            .card:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.3) !important;
-            }
-            
-            /* Button enhancements */
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+            * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+
+            body { background: #111113; }
+
+            ::-webkit-scrollbar { width: 6px; height: 6px; }
+            ::-webkit-scrollbar-track { background: #18181b; }
+            ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
+            ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+
+            .card { border-radius: 6px !important; }
+
             .btn {
-                transition: all 0.3s ease !important;
-                font-weight: 600 !important;
-                letter-spacing: 0.5px !important;
-                text-transform: uppercase !important;
+                font-weight: 500 !important;
+                font-size: 0.8rem !important;
+                border-radius: 4px !important;
+                transition: background 0.15s ease !important;
+            }
+            .btn-primary {
+                background: #2563eb !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+            .btn-primary:hover { background: #1d4ed8 !important; }
+            .btn-secondary {
+                background: #27272a !important;
+                border: 1px solid #3f3f46 !important;
+                color: #d4d4d8 !important;
+                box-shadow: none !important;
+            }
+            .btn-secondary:hover { background: #3f3f46 !important; }
+
+            .form-control, .form-select {
+                background: #18181b !important;
+                border: 1px solid #27272a !important;
+                color: #e4e4e7 !important;
+                border-radius: 4px !important;
                 font-size: 0.85rem !important;
             }
-            
-            .btn-primary {
-                background: linear-gradient(135deg, #6366F1, #8B5CF6) !important;
-                border: none !important;
-                box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4) !important;
-            }
-            
-            .btn-primary:hover {
-                background: linear-gradient(135deg, #8B5CF6, #6366F1) !important;
-                box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6) !important;
-                transform: translateY(-2px);
-            }
-            
-            .btn-secondary {
-                background: linear-gradient(135deg, #10B981, #059669) !important;
-                border: none !important;
-                box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4) !important;
-            }
-            
-            .btn-secondary:hover {
-                background: linear-gradient(135deg, #059669, #10B981) !important;
-                box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6) !important;
-                transform: translateY(-2px);
-            }
-            
-            /* Input styling */
-            .form-control, .form-select {
-                background: rgba(30, 30, 46, 0.6) !important;
-                border: 1px solid rgba(99, 102, 241, 0.3) !important;
-                color: #F8F9FA !important;
-                transition: all 0.3s ease !important;
-            }
-            
             .form-control:focus, .form-select:focus {
-                background: rgba(30, 30, 46, 0.8) !important;
-                border-color: #6366F1 !important;
-                box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25) !important;
+                border-color: #3b82f6 !important;
+                box-shadow: 0 0 0 1px rgba(59,130,246,0.3) !important;
             }
-            
-            /* Badge styling */
-            .badge {
-                padding: 0.5em 1em !important;
-                font-weight: 600 !important;
-                letter-spacing: 0.5px !important;
-            }
-            
-            /* Table styling */
-            .table {
-                font-size: 0.9rem !important;
-            }
-            
-            .table-hover tbody tr:hover {
-                background-color: rgba(99, 102, 241, 0.1) !important;
-            }
-            
-            /* Tab styling */
+
+            .badge { font-weight: 500 !important; }
+
+            .table { font-size: 0.82rem !important; color: #a1a1aa !important; }
+            .table-hover tbody tr:hover { background-color: rgba(63,63,70,0.3) !important; }
+
             .tab {
-                background: rgba(30, 30, 46, 0.6) !important;
-                border: 1px solid rgba(99, 102, 241, 0.2) !important;
-                color: #F8F9FA !important;
-                transition: all 0.3s ease !important;
+                background: #18181b !important;
+                border: 1px solid #27272a !important;
+                color: #a1a1aa !important;
+                font-size: 0.8rem !important;
             }
-            
             .tab--selected {
-                background: linear-gradient(135deg, #6366F1, #8B5CF6) !important;
-                border-color: #6366F1 !important;
+                background: #27272a !important;
+                border-bottom: 2px solid #3b82f6 !important;
+                color: #e4e4e7 !important;
             }
-            
-            /* Loading animation */
-            ._dash-loading {
-                opacity: 0.3;
-            }
-            
-            /* Card header styling */
+
+            ._dash-loading { opacity: 0.3; }
+
             .card-header {
-                background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2)) !important;
-                border-bottom: 1px solid rgba(99, 102, 241, 0.3) !important;
-                font-weight: 600 !important;
+                background: #18181b !important;
+                border-bottom: 1px solid #27272a !important;
+                font-weight: 500 !important;
+                font-size: 0.85rem !important;
+                padding: 10px 16px !important;
             }
-            
-            /* Smooth fade-in animation */
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            .card {
-                animation: fadeIn 0.6s ease-out;
-            }
-            
-            /* Radio button styling */
+
             .form-check-input:checked {
-                background-color: #6366F1 !important;
-                border-color: #6366F1 !important;
+                background-color: #3b82f6 !important;
+                border-color: #3b82f6 !important;
             }
-            
-            /* Toast notification styling */
+
             .toast {
-                background: rgba(30, 30, 46, 0.95) !important;
-                border: 1px solid rgba(99, 102, 241, 0.3) !important;
-                backdrop-filter: blur(10px);
+                background: #18181b !important;
+                border: 1px solid #27272a !important;
             }
         </style>
     </head>
@@ -281,13 +205,10 @@ app.index_string = '''
 '''
 
 card_style = {
-    'boxShadow': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-    'borderRadius': '16px',
-    'marginBottom': '24px',
-    'backgroundColor': 'rgba(30, 30, 46, 0.8)',
-    'backdropFilter': 'blur(10px)',
-    'border': '1px solid rgba(99, 102, 241, 0.18)',
-    'transition': 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    'borderRadius': '6px',
+    'marginBottom': '16px',
+    'backgroundColor': '#18181b',
+    'border': '1px solid #27272a',
 }
 
 graph_config = {
@@ -297,25 +218,25 @@ graph_config = {
 }
 
 colors = {
-    'background': '#0F0F1E',
-    'text': '#F8F9FA',
-    'primary': '#6366F1',
-    'secondary': '#10B981',
-    'accent': '#F59E0B',
-    'positive': '#10B981',
-    'negative': '#EF4444',
-    'neutral': '#F59E0B',
-    'dark_card': 'rgba(30, 30, 46, 0.7)',
-    'card_header': '#1E1E2E',
-    'chart_bg': '#1A1A2E',
-    'grid_color': 'rgba(99, 102, 241, 0.1)',
-    'border_color': 'rgba(99, 102, 241, 0.2)',
-    'gradient_start': '#6366F1',
-    'gradient_end': '#8B5CF6',
-    'success_light': '#34D399',
-    'danger_light': '#F87171',
-    'info': '#3B82F6',
-    'warning': '#FBBF24'
+    'background': '#111113',
+    'text': '#e4e4e7',
+    'primary': '#3b82f6',
+    'secondary': '#22c55e',
+    'accent': '#eab308',
+    'positive': '#22c55e',
+    'negative': '#ef4444',
+    'neutral': '#a1a1aa',
+    'dark_card': '#18181b',
+    'card_header': '#18181b',
+    'chart_bg': '#111113',
+    'grid_color': 'rgba(63,63,70,0.4)',
+    'border_color': '#27272a',
+    'gradient_start': '#3b82f6',
+    'gradient_end': '#3b82f6',
+    'success_light': '#22c55e',
+    'danger_light': '#ef4444',
+    'info': '#3b82f6',
+    'warning': '#eab308'
 }
 
 popular_stocks = [
@@ -330,35 +251,33 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             html.Div([
-                html.H1([
-                    html.I(className="fas fa-chart-line me-3"),
-                    "StockVision - Indian Market Analysis"
-                ], className="display-4 fw-bold text-center text-light mb-0"),
-                html.P("Real-time analysis & prediction of NSE stocks",
-                       className="lead text-center text-light opacity-75")
-            ], className="pt-4 pb-3")
+                html.H5("StockVision", className="fw-600 mb-0",
+                        style={'color': '#e4e4e7', 'fontSize': '1rem'}),
+                html.Span("Indian Market Analysis",
+                          style={'color': '#71717a', 'fontSize': '0.75rem', 'marginLeft': '8px'})
+            ], className="d-flex align-items-center", style={'padding': '12px 0'})
         ], width=12)
     ], style={
-        'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        'borderRadius': '0 0 20px 20px',
-        'marginBottom': '30px',
-        'boxShadow': '0 10px 40px rgba(102, 126, 234, 0.3)'
+        'borderBottom': '1px solid #27272a',
+        'marginBottom': '16px',
     }),
 
     dbc.Row([
         dbc.Col([
             dbc.Card([
-                dbc.CardHeader(html.H4("Stock Selection", className="text-center text-light")),
+                dbc.CardHeader("Stock Selection"),
                 dbc.CardBody([
-                    html.Label("Enter NSE stock ticker:", className="form-label fw-bold"),
+                    html.Label("NSE Ticker", className="form-label",
+                              style={'fontSize': '0.75rem', 'color': '#71717a'}),
                     dbc.Input(
                         id='input-stock',
                         value='RELIANCE.NS',
                         type='text',
                         placeholder='e.g., INFY.NS, TCS.NS',
-                        className='mb-3 bg-dark text-light border-secondary'
+                        className='mb-3'
                     ),
-                    html.Label("Popular Stocks:", className="form-label fw-bold"),
+                    html.Label("Quick Select", className="form-label",
+                              style={'fontSize': '0.75rem', 'color': '#71717a'}),
                     dbc.RadioItems(
                         id='popular-stocks',
                         options=popular_stocks,
@@ -366,22 +285,23 @@ app.layout = dbc.Container([
                         className="mb-3",
                         inline=False
                     ),
-                    html.Label("Compare with Stock:", className="form-label fw-bold"),
+                    html.Label("Compare With", className="form-label",
+                              style={'fontSize': '0.75rem', 'color': '#71717a'}),
                     dbc.Input(
                         id='compare-stock',
                         value='',
                         type='text',
-                        placeholder='e.g., TCS.NS (optional)',
-                        className='mb-3 bg-dark text-light border-secondary'
+                        placeholder='e.g., TCS.NS',
+                        className='mb-3'
                     ),
                     dbc.Button(
-                        [html.I(className="fas fa-search me-2"), "Analyze"],
+                        "Analyze",
                         id="analyze-button",
                         color="primary",
                         className="w-100 mb-2"
                     ),
                     dbc.Button(
-                        [html.I(className="fas fa-sync-alt me-2"), "Refresh Data"],
+                        "Refresh",
                         id="refresh-button",
                         color="secondary",
                         className="w-100",
@@ -391,17 +311,14 @@ app.layout = dbc.Container([
             ], style=card_style),
 
             dbc.Card([
-                dbc.CardHeader(html.H5("Current Stock Price", className="text-center")),
+                dbc.CardHeader("Price"),
                 dbc.CardBody([
                     html.Div(id='stock-details', className='text-center')
                 ])
             ], style=card_style),
 
             dbc.Card([
-                dbc.CardHeader(html.H5([
-                    html.I(className="fas fa-robot me-2"),
-                    "AI Price Predictions"
-                ], className="text-center")),
+                dbc.CardHeader("Predictions (5-day)"),
                 dbc.CardBody([
                     html.Div(id='financials-data')
                 ])
@@ -412,19 +329,13 @@ app.layout = dbc.Container([
             dbc.Card([
                 dbc.CardHeader([
                     html.Div([
-                        html.H5([
-                            html.I(className="fas fa-chart-line me-2"),
-                            "Price History with Technical Indicators"
-                        ], className="mb-0 d-inline"),
+                        html.Span("Price History", style={'color': '#e4e4e7'}),
                         dbc.ButtonGroup([
-                            dbc.Button("1W", id="1w-button", color="primary", outline=True, size="sm",
-                                       className="mx-1"),
-                            dbc.Button("1M", id="1m-button", color="primary", size="sm", className="mx-1"),
-                            dbc.Button("3M", id="3m-button", color="primary", outline=True, size="sm",
-                                       className="mx-1"),
-                            dbc.Button("1Y", id="1y-button", color="primary", outline=True, size="sm",
-                                       className="mx-1"),
-                        ], className="float-end")
+                            dbc.Button("1W", id="1w-button", color="primary", outline=True, size="sm"),
+                            dbc.Button("1M", id="1m-button", color="primary", size="sm"),
+                            dbc.Button("3M", id="3m-button", color="primary", outline=True, size="sm"),
+                            dbc.Button("1Y", id="1y-button", color="primary", outline=True, size="sm"),
+                        ])
                     ], className="d-flex justify-content-between align-items-center")
                 ]),
                 dbc.CardBody([
@@ -442,7 +353,7 @@ app.layout = dbc.Container([
                                 children=html.Div(id='rsi-graph')
                             )
                         ]),
-                        dcc.Tab(label="Bollinger Bands", value="bb", children=[
+                        dcc.Tab(label="Bollinger", value="bb", children=[
                             dcc.Loading(
                                 type="circle",
                                 children=html.Div(id='bb-graph')
@@ -455,11 +366,8 @@ app.layout = dbc.Container([
             dbc.Card([
                 dbc.CardHeader([
                     html.Div([
-                        html.H5([
-                            html.I(className="fas fa-clock me-2"),
-                            "Intraday Performance"
-                        ], className="mb-0 d-inline"),
-                        html.Span("5-minute intervals", className="text-muted float-end")
+                        html.Span("Intraday", style={'color': '#e4e4e7'}),
+                        html.Span("5m", style={'color': '#52525b', 'fontSize': '0.75rem'})
                     ], className="d-flex justify-content-between align-items-center")
                 ]),
                 dbc.CardBody([
@@ -472,10 +380,7 @@ app.layout = dbc.Container([
             ], style=card_style),
 
             dbc.Card([
-                dbc.CardHeader(html.H5([
-                    html.I(className="fas fa-exchange-alt me-2"),
-                    "Stock Comparison"
-                ], className="text-center")),
+                dbc.CardHeader("Comparison"),
                 dbc.CardBody([
                     dcc.Loading(
                         type="circle",
@@ -487,20 +392,14 @@ app.layout = dbc.Container([
 
         dbc.Col([
             dbc.Card([
-                dbc.CardHeader(html.H5([
-                    html.I(className="fas fa-calendar-day me-2"),
-                    "Today's Snapshot"
-                ], className="text-center")),
+                dbc.CardHeader("Today"),
                 dbc.CardBody([
                     html.Div(id='daily-data-box')
                 ])
             ], style=card_style),
 
             dbc.Card([
-                dbc.CardHeader(html.H5([
-                    html.I(className="fas fa-building me-2"),
-                    "Company Fundamentals"
-                ], className="text-center")),
+                dbc.CardHeader("Fundamentals"),
                 dbc.CardBody([
                     dcc.Loading(
                         id="loading-3",
@@ -511,10 +410,7 @@ app.layout = dbc.Container([
             ], style=card_style),
 
             dbc.Card([
-                dbc.CardHeader(html.H5([
-                    html.I(className="fas fa-file-invoice-dollar me-2"),
-                    "Quarterly Financials"
-                ], className="text-center")),
+                dbc.CardHeader("Quarterly Results"),
                 dbc.CardBody([
                     dcc.Loading(
                         id="loading-4",
@@ -525,10 +421,7 @@ app.layout = dbc.Container([
             ], style=card_style),
 
             dbc.Card([
-                dbc.CardHeader(html.H5([
-                    html.I(className="fas fa-chart-line me-2"),
-                    "Comprehensive Financial Details"
-                ], className="text-center")),
+                dbc.CardHeader("Financials"),
                 dbc.CardBody([
                     dcc.Loading(
                         id="loading-5",
@@ -544,10 +437,10 @@ app.layout = dbc.Container([
         dbc.Col([
             html.Footer([
                 html.P([
-                    "StockVision © 2025 | Data provided by Yahoo Finance | ",
-                    html.Small("Last updated: ", id="last-updated", className="text-muted")
-                ], className="text-center text-muted")
-            ], className="py-3 mt-4")
+                    "StockVision · Yahoo Finance · ",
+                    html.Span(id="last-updated", style={'color': '#52525b'})
+                ], style={'color': '#3f3f46', 'fontSize': '0.75rem'}, className="text-center mb-0")
+            ], style={'borderTop': '1px solid #27272a', 'padding': '12px 0', 'marginTop': '16px'})
         ], width=12)
     ]),
 
@@ -681,41 +574,35 @@ def update_stock_info(analyze_clicks, refresh_clicks, n_intervals, stock_ticker,
         fundamentals_data = html.Div([
             html.Table([
                 html.Tr([
-                    html.Td(html.I(className="fas fa-chart-pie text-primary"), style={'width': '40px'}),
-                    html.Td("P/E Ratio"),
+                    html.Td("P/E Ratio", style={'color': '#71717a'}),
                     html.Td(f"{info.get('trailingPE', 'N/A'):.2f}" if isinstance(info.get('trailingPE'),
                                                                                  (int, float)) else "N/A",
-                            className="fw-bold text-end")
+                            className="text-end", style={'color': '#e4e4e7'})
                 ]),
                 html.Tr([
-                    html.Td(html.I(className="fas fa-dollar-sign text-success")),
-                    html.Td("Market Cap"),
+                    html.Td("Market Cap", style={'color': '#71717a'}),
                     html.Td(f"₹{info.get('marketCap') / 1e9:.2f}B" if info.get('marketCap') else "N/A",
-                            className="fw-bold text-end")
+                            className="text-end", style={'color': '#e4e4e7'})
                 ]),
                 html.Tr([
-                    html.Td(html.I(className="fas fa-coins text-warning")),
-                    html.Td("EPS"),
+                    html.Td("EPS", style={'color': '#71717a'}),
                     html.Td(f"₹{info.get('trailingEps', 'N/A')}" if info.get('trailingEps') else "N/A",
-                            className="fw-bold text-end")
+                            className="text-end", style={'color': '#e4e4e7'})
                 ]),
                 html.Tr([
-                    html.Td(html.I(className="fas fa-percentage text-info")),
-                    html.Td("Dividend Yield"),
+                    html.Td("Div Yield", style={'color': '#71717a'}),
                     html.Td(f"{info.get('dividendYield', 0) * 100:.2f}%" if info.get('dividendYield') else "N/A",
-                            className="fw-bold text-end")
+                            className="text-end", style={'color': '#e4e4e7'})
                 ]),
                 html.Tr([
-                    html.Td(html.I(className="fas fa-industry text-secondary")),
-                    html.Td("Sector"),
-                    html.Td(info.get('sector', 'N/A'), className="fw-bold text-end")
+                    html.Td("Sector", style={'color': '#71717a'}),
+                    html.Td(info.get('sector', 'N/A'), className="text-end", style={'color': '#e4e4e7'})
                 ]),
                 html.Tr([
-                    html.Td(html.I(className="fas fa-building text-light")),
-                    html.Td("Industry"),
-                    html.Td(info.get('industry', 'N/A'), className="fw-bold text-end")
+                    html.Td("Industry", style={'color': '#71717a'}),
+                    html.Td(info.get('industry', 'N/A'), className="text-end", style={'color': '#e4e4e7'})
                 ]),
-            ], className='table table-hover text-light')
+            ], className='table table-sm table-hover')
         ])
 
         quarterly = stock.quarterly_financials
@@ -728,41 +615,36 @@ def update_stock_info(analyze_clicks, refresh_clicks, n_intervals, stock_ticker,
             quarterly_financials_data = html.Div([
                 html.Table([
                     html.Tr([
-                        html.Td(html.I(className="fas fa-money-bill-wave text-success"), style={'width': '40px'}),
-                        html.Td("Total Revenue"),
+                        html.Td("Revenue", style={'color': '#71717a'}),
                         html.Td(f"₹{latest_quarter.get('Total Revenue', 'N/A') / 1e7:.2f} Cr" if pd.notna(
                             latest_quarter.get('Total Revenue')) else "N/A",
-                                className="fw-bold text-end")
+                                className="text-end", style={'color': '#e4e4e7'})
                     ]),
                     html.Tr([
-                        html.Td(html.I(className="fas fa-hand-holding-usd text-info")),
-                        html.Td("Gross Profit"),
+                        html.Td("Gross Profit", style={'color': '#71717a'}),
                         html.Td(f"₹{latest_quarter.get('Gross Profit', 'N/A') / 1e7:.2f} Cr" if pd.notna(
                             latest_quarter.get('Gross Profit')) else "N/A",
-                                className="fw-bold text-end")
+                                className="text-end", style={'color': '#e4e4e7'})
                     ]),
                     html.Tr([
-                        html.Td(html.I(className="fas fa-wallet text-primary")),
-                        html.Td("Net Income"),
+                        html.Td("Net Income", style={'color': '#71717a'}),
                         html.Td(f"₹{latest_quarter.get('Net Income', 'N/A') / 1e7:.2f} Cr" if pd.notna(
                             latest_quarter.get('Net Income')) else "N/A",
-                                className="fw-bold text-end")
+                                className="text-end", style={'color': '#e4e4e7'})
                     ]),
                     html.Tr([
-                        html.Td(html.I(className="fas fa-chart-bar text-warning")),
-                        html.Td("EBITDA"),
+                        html.Td("EBITDA", style={'color': '#71717a'}),
                         html.Td(f"₹{latest_quarter.get('EBITDA', 'N/A') / 1e7:.2f} Cr" if pd.notna(
                             latest_quarter.get('EBITDA')) else "N/A",
-                                className="fw-bold text-end")
+                                className="text-end", style={'color': '#e4e4e7'})
                     ]),
                     html.Tr([
-                        html.Td(html.I(className="fas fa-cogs text-secondary")),
-                        html.Td("Operating Income"),
+                        html.Td("Oper. Income", style={'color': '#71717a'}),
                         html.Td(f"₹{latest_quarter.get('Operating Income', 'N/A') / 1e7:.2f} Cr" if pd.notna(
                             latest_quarter.get('Operating Income')) else "N/A",
-                                className="fw-bold text-end")
+                                className="text-end", style={'color': '#e4e4e7'})
                     ]),
-                ], className='table table-hover text-light')
+                ], className='table table-sm table-hover')
             ])
 
         latest = hist.iloc[-1]
@@ -779,125 +661,50 @@ def update_stock_info(analyze_clicks, refresh_clicks, n_intervals, stock_ticker,
 
         stock_details = html.Div([
             html.Div([
-                html.H4(f"{company_name}", className='text-center mb-1 fw-bold', 
-                       style={'color': colors['text'], 'letterSpacing': '0.5px'}),
-                html.H6(f"({stock_ticker})", className='text-center mb-3', 
-                       style={'color': colors['neutral'], 'fontWeight': '500'}),
-            ]),
+                html.Span(f"{company_name}", style={'color': '#e4e4e7', 'fontSize': '0.85rem', 'fontWeight': '500'}),
+                html.Span(f" {stock_ticker}", style={'color': '#52525b', 'fontSize': '0.75rem'}),
+            ], className='text-center mb-2'),
             html.Div([
-                html.H1([
-                    f"₹{close_price:.2f}"
-                ], className='text-center mb-2 fw-bold', 
-                   style={'fontSize': '2.5rem', 'color': colors['primary'], 'letterSpacing': '-1px'}),
-                html.Div([
-                    html.I(className=f"fas {icon} me-2", style={'fontSize': '1.2rem'}),
-                    html.Span(f"{abs(percent_change):.2f}%", className='fw-bold', 
-                             style={'fontSize': '1.3rem'})
-                ], className='text-center mb-3', 
-                   style={
-                       'color': color,
-                       'padding': '8px 20px',
-                       'borderRadius': '12px',
-                       'background': f'linear-gradient(135deg, {color}22, {color}11)',
-                       'display': 'inline-block',
-                       'border': f'1px solid {color}44'
-                   })
-            ]),
-            html.Hr(style={'borderColor': colors['border_color'], 'margin': '20px 0'}),
+                html.Span(f"₹{close_price:.2f}", style={'fontSize': '1.6rem', 'fontWeight': '600', 'color': '#e4e4e7'}),
+            ], className='text-center mb-1'),
             html.Div([
-                dbc.Badge([
-                    html.I(className="fas fa-chart-bar me-2"),
-                    f"Vol: {volume:,.0f}"
-                ], color="info", className="me-2 px-3 py-2", 
-                   style={'fontSize': '0.85rem', 'fontWeight': '600'}),
-                dbc.Badge([
-                    html.I(className="fas fa-building me-2"),
-                    "NSE"
-                ], color="primary", className="px-3 py-2",
-                   style={'fontSize': '0.85rem', 'fontWeight': '600'})
+                html.Span(f"{'▲' if percent_change > 0 else '▼'} {abs(percent_change):.2f}%",
+                         style={'color': color, 'fontSize': '0.85rem', 'fontWeight': '500'})
+            ], className='text-center mb-2'),
+            html.Hr(style={'borderColor': '#27272a', 'margin': '12px 0'}),
+            html.Div([
+                html.Span(f"Vol {volume:,.0f}", style={'color': '#71717a', 'fontSize': '0.75rem'}),
             ], className="text-center")
-        ], style={'padding': '10px'})
+        ], style={'padding': '8px'})
 
         daily_data_box = html.Div([
-            html.Div([
-                html.Div([
-                    html.Div([
-                        html.I(className="fas fa-door-open", 
-                              style={'color': colors['info'], 'fontSize': '1.2rem', 'marginBottom': '8px'}),
-                        html.Span("Open", className="d-block text-muted", 
-                                 style={'fontSize': '0.75rem', 'fontWeight': '600', 'letterSpacing': '0.5px'}),
-                        html.H4(f"₹{open_price:.2f}", className="mb-0 fw-bold", 
-                               style={'color': colors['text']})
-                    ], className="text-center p-3", 
-                       style={
-                           'background': 'rgba(59, 130, 246, 0.1)',
-                           'borderRadius': '12px',
-                           'border': '1px solid rgba(59, 130, 246, 0.2)'
-                       })
-                ], className="col-6 mb-3"),
-                html.Div([
-                    html.Div([
-                        html.I(className="fas fa-door-closed", 
-                              style={'color': colors['primary'], 'fontSize': '1.2rem', 'marginBottom': '8px'}),
-                        html.Span("Close", className="d-block text-muted", 
-                                 style={'fontSize': '0.75rem', 'fontWeight': '600', 'letterSpacing': '0.5px'}),
-                        html.H4(f"₹{close_price:.2f}", className="mb-0 fw-bold", 
-                               style={'color': colors['text']})
-                    ], className="text-center p-3", 
-                       style={
-                           'background': 'rgba(99, 102, 241, 0.1)',
-                           'borderRadius': '12px',
-                           'border': '1px solid rgba(99, 102, 241, 0.2)'
-                       })
-                ], className="col-6 mb-3"),
-                html.Div([
-                    html.Div([
-                        html.I(className="fas fa-arrow-up", 
-                              style={'color': colors['positive'], 'fontSize': '1.2rem', 'marginBottom': '8px'}),
-                        html.Span("High", className="d-block text-muted", 
-                                 style={'fontSize': '0.75rem', 'fontWeight': '600', 'letterSpacing': '0.5px'}),
-                        html.H4(f"₹{high_price:.2f}", className="mb-0 fw-bold", 
-                               style={'color': colors['positive']})
-                    ], className="text-center p-3", 
-                       style={
-                           'background': 'rgba(16, 185, 129, 0.1)',
-                           'borderRadius': '12px',
-                           'border': '1px solid rgba(16, 185, 129, 0.2)'
-                       })
-                ], className="col-6 mb-3"),
-                html.Div([
-                    html.Div([
-                        html.I(className="fas fa-arrow-down", 
-                              style={'color': colors['negative'], 'fontSize': '1.2rem', 'marginBottom': '8px'}),
-                        html.Span("Low", className="d-block text-muted", 
-                                 style={'fontSize': '0.75rem', 'fontWeight': '600', 'letterSpacing': '0.5px'}),
-                        html.H4(f"₹{low_price:.2f}", className="mb-0 fw-bold", 
-                               style={'color': colors['negative']})
-                    ], className="text-center p-3", 
-                       style={
-                           'background': 'rgba(239, 68, 68, 0.1)',
-                           'borderRadius': '12px',
-                           'border': '1px solid rgba(239, 68, 68, 0.2)'
-                       })
-                ], className="col-6 mb-3"),
-            ], className="row"),
-            html.Div([
-                html.Div([
-                    html.Span("Today's Change", className="d-block text-center mb-2", 
-                             style={'fontSize': '0.8rem', 'fontWeight': '600', 'color': colors['text'], 'opacity': '0.7'}),
-                    html.Div([
-                        html.I(className=f"fas {icon} me-2"),
-                        f"{price_direction.upper()} by {abs(percent_change):.2f}%"
-                    ], className="text-center fw-bold py-2", 
-                       style={
-                           'color': color,
-                           'fontSize': '1.1rem',
-                           'background': f'linear-gradient(135deg, {color}22, {color}11)',
-                           'borderRadius': '10px',
-                           'border': f'1px solid {color}44'
-                       })
-                ], style={'marginTop': '10px'})
-            ])
+            html.Table([
+                html.Tr([
+                    html.Td("Open", style={'color': '#71717a', 'fontSize': '0.8rem', 'padding': '6px 0'}),
+                    html.Td(f"₹{open_price:.2f}", className="text-end",
+                            style={'color': '#e4e4e7', 'fontSize': '0.8rem', 'fontWeight': '500', 'padding': '6px 0'})
+                ]),
+                html.Tr([
+                    html.Td("Close", style={'color': '#71717a', 'fontSize': '0.8rem', 'padding': '6px 0'}),
+                    html.Td(f"₹{close_price:.2f}", className="text-end",
+                            style={'color': '#e4e4e7', 'fontSize': '0.8rem', 'fontWeight': '500', 'padding': '6px 0'})
+                ]),
+                html.Tr([
+                    html.Td("High", style={'color': '#71717a', 'fontSize': '0.8rem', 'padding': '6px 0'}),
+                    html.Td(f"₹{high_price:.2f}", className="text-end",
+                            style={'color': colors['positive'], 'fontSize': '0.8rem', 'fontWeight': '500', 'padding': '6px 0'})
+                ]),
+                html.Tr([
+                    html.Td("Low", style={'color': '#71717a', 'fontSize': '0.8rem', 'padding': '6px 0'}),
+                    html.Td(f"₹{low_price:.2f}", className="text-end",
+                            style={'color': colors['negative'], 'fontSize': '0.8rem', 'fontWeight': '500', 'padding': '6px 0'})
+                ]),
+                html.Tr([
+                    html.Td("Change", style={'color': '#71717a', 'fontSize': '0.8rem', 'padding': '6px 0'}),
+                    html.Td(f"{'▲' if percent_change > 0 else '▼'} {abs(percent_change):.2f}%", className="text-end",
+                            style={'color': color, 'fontSize': '0.8rem', 'fontWeight': '500', 'padding': '6px 0'})
+                ]),
+            ], style={'width': '100%'})
         ])
 
         future_predictions = predict_future_prices_linear(hist)
@@ -917,23 +724,22 @@ def update_stock_info(analyze_clicks, refresh_clicks, n_intervals, stock_ticker,
             trends.append(trend_icon)
 
         financials_data = html.Div([
-            html.P("Next 5 Trading Days", className="text-center text-muted mb-3"),
             html.Table([
                 html.Thead([
                     html.Tr([
-                        html.Th("Date"),
-                        html.Th("Price", className="text-end"),
-                        html.Th("Trend", className="text-center", style={"width": "40px"})
+                        html.Th("Date", style={'color': '#71717a', 'fontWeight': '500'}),
+                        html.Th("Price", className="text-end", style={'color': '#71717a', 'fontWeight': '500'}),
+                        html.Th("", style={"width": "30px"})
                     ])
                 ]),
                 html.Tbody([
                     html.Tr([
-                        html.Td(date),
-                        html.Td(f"₹{price:.2f}", className="text-end fw-bold"),
-                        html.Td(html.I(className=f"fas {icon} text-center"), className="text-center")
+                        html.Td(date, style={'color': '#a1a1aa'}),
+                        html.Td(f"₹{price:.2f}", className="text-end", style={'color': '#e4e4e7'}),
+                        html.Td(html.I(className=f"fas {icon}"), className="text-center")
                     ]) for date, price, icon in zip(future_dates, future_predictions, trends)
                 ])
-            ], className='table table-sm table-hover text-light')
+            ], className='table table-sm table-hover')
         ])
 
         common_layout = {
@@ -954,10 +760,10 @@ def update_stock_info(analyze_clicks, refresh_clicks, n_intervals, stock_ticker,
             'paper_bgcolor': colors['chart_bg'],
             'hovermode': 'x unified',
             'hoverlabel': {
-                'bgcolor': 'rgba(30, 30, 46, 0.95)',
-                'font_size': 13,
+                'bgcolor': '#18181b',
+                'font_size': 12,
                 'font_family': 'Inter, system-ui, sans-serif',
-                'bordercolor': colors['primary']
+                'bordercolor': '#3f3f46'
             }
         }
 
@@ -979,7 +785,7 @@ def update_stock_info(analyze_clicks, refresh_clicks, n_intervals, stock_ticker,
                 name='Close Price',
                 line=dict(color=colors['primary'], width=3),
                 fill='tozeroy',
-                fillcolor=f'rgba(99, 102, 241, 0.1)',
+                fillcolor='rgba(59, 130, 246, 0.08)',
                 hovertemplate='<b>Date</b>: %{x|%d %b %Y}<br><b>Price</b>: ₹%{y:.2f}<extra></extra>'
             ),
             row=1, col=1
@@ -1172,7 +978,7 @@ def update_stock_info(analyze_clicks, refresh_clicks, n_intervals, stock_ticker,
                 line=dict(color=colors['success_light'], width=2, dash='dash'),
                 hovertemplate='<b>Lower Band</b>: ₹%{y:.2f}<extra></extra>',
                 fill='tonexty',
-                fillcolor='rgba(99, 102, 241, 0.08)',
+                fillcolor='rgba(59, 130, 246, 0.06)',
                 showlegend=True
             )
         )
@@ -1237,12 +1043,7 @@ def update_stock_info(analyze_clicks, refresh_clicks, n_intervals, stock_ticker,
                     decreasing_line_color=colors['negative'],
                     increasing_fillcolor=colors['positive'],
                     decreasing_fillcolor=colors['negative'],
-                    name='Price',
-                    hovertemplate='<b>Time</b>: %{x|%H:%M}<br>' +
-                                 '<b>Open</b>: ₹%{open:.2f}<br>' +
-                                 '<b>High</b>: ₹%{high:.2f}<br>' +
-                                 '<b>Low</b>: ₹%{low:.2f}<br>' +
-                                 '<b>Close</b>: ₹%{close:.2f}<extra></extra>'
+                    name='Price'
                 )
             )
         else:
@@ -1255,7 +1056,7 @@ def update_stock_info(analyze_clicks, refresh_clicks, n_intervals, stock_ticker,
                     line=dict(color=colors['primary'], width=3),
                     marker=dict(size=8, color=colors['primary'], line=dict(color=colors['text'], width=1)),
                     fill='tozeroy',
-                    fillcolor='rgba(99, 102, 241, 0.1)',
+                    fillcolor='rgba(59, 130, 246, 0.08)',
                     hovertemplate='<b>Time</b>: %{x|%H:%M}<br><b>Price</b>: ₹%{y:.2f}<extra></extra>'
                 )
             )
@@ -1359,157 +1160,126 @@ def update_stock_info(analyze_clicks, refresh_clicks, n_intervals, stock_ticker,
             if not balance_sheet.empty:
                 latest_bs = balance_sheet.iloc[:, 0]
                 comprehensive_financials.append(html.Div([
-                    html.H6([
-                        html.I(className="fas fa-balance-scale me-2", style={'color': colors['primary']}),
-                        "Balance Sheet"
-                    ], className="fw-bold mb-3", style={'color': colors['text']}),
+                    html.Span("Balance Sheet", style={'color': '#a1a1aa', 'fontSize': '0.75rem', 'fontWeight': '500'}),
                     html.Table([
                         html.Tr([
-                            html.Td(html.I(className="fas fa-coins text-warning"), style={'width': '40px'}),
-                            html.Td("Total Assets"),
+                            html.Td("Total Assets", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_bs.get('Total Assets', 0) / 1e9:.2f}B" if pd.notna(latest_bs.get('Total Assets')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
                         html.Tr([
-                            html.Td(html.I(className="fas fa-file-invoice text-danger")),
-                            html.Td("Total Liabilities"),
+                            html.Td("Total Liabilities", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_bs.get('Total Liabilities Net Minority Interest', 0) / 1e9:.2f}B" if pd.notna(latest_bs.get('Total Liabilities Net Minority Interest')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
                         html.Tr([
-                            html.Td(html.I(className="fas fa-chart-pie text-success")),
-                            html.Td("Stockholders Equity"),
+                            html.Td("Equity", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_bs.get('Stockholders Equity', 0) / 1e9:.2f}B" if pd.notna(latest_bs.get('Stockholders Equity')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
                         html.Tr([
-                            html.Td(html.I(className="fas fa-money-bill-wave text-info")),
-                            html.Td("Cash & Equivalents"),
+                            html.Td("Cash", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_bs.get('Cash And Cash Equivalents', 0) / 1e9:.2f}B" if pd.notna(latest_bs.get('Cash And Cash Equivalents')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
-                    ], className='table table-sm table-hover text-light')
-                ], className="mb-4"))
+                    ], className='table table-sm table-hover')
+                ], className="mb-3"))
             
             if not cash_flow.empty:
                 latest_cf = cash_flow.iloc[:, 0]
                 comprehensive_financials.append(html.Div([
-                    html.H6([
-                        html.I(className="fas fa-exchange-alt me-2", style={'color': colors['secondary']}),
-                        "Cash Flow"
-                    ], className="fw-bold mb-3", style={'color': colors['text']}),
+                    html.Span("Cash Flow", style={'color': '#a1a1aa', 'fontSize': '0.75rem', 'fontWeight': '500'}),
                     html.Table([
                         html.Tr([
-                            html.Td(html.I(className="fas fa-arrow-circle-down text-success"), style={'width': '40px'}),
-                            html.Td("Operating Cash Flow"),
+                            html.Td("Operating", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_cf.get('Operating Cash Flow', 0) / 1e9:.2f}B" if pd.notna(latest_cf.get('Operating Cash Flow')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
                         html.Tr([
-                            html.Td(html.I(className="fas fa-tools text-primary")),
-                            html.Td("Investing Cash Flow"),
+                            html.Td("Investing", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_cf.get('Investing Cash Flow', 0) / 1e9:.2f}B" if pd.notna(latest_cf.get('Investing Cash Flow')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
                         html.Tr([
-                            html.Td(html.I(className="fas fa-hand-holding-usd text-warning")),
-                            html.Td("Financing Cash Flow"),
+                            html.Td("Financing", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_cf.get('Financing Cash Flow', 0) / 1e9:.2f}B" if pd.notna(latest_cf.get('Financing Cash Flow')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
                         html.Tr([
-                            html.Td(html.I(className="fas fa-chart-line text-info")),
-                            html.Td("Free Cash Flow"),
+                            html.Td("Free CF", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_cf.get('Free Cash Flow', 0) / 1e9:.2f}B" if pd.notna(latest_cf.get('Free Cash Flow')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
-                    ], className='table table-sm table-hover text-light')
-                ], className="mb-4"))
+                    ], className='table table-sm table-hover')
+                ], className="mb-3"))
             
             if not income_stmt.empty:
                 latest_is = income_stmt.iloc[:, 0]
                 comprehensive_financials.append(html.Div([
-                    html.H6([
-                        html.I(className="fas fa-file-invoice-dollar me-2", style={'color': colors['accent']}),
-                        "Income Statement"
-                    ], className="fw-bold mb-3", style={'color': colors['text']}),
+                    html.Span("Income Statement", style={'color': '#a1a1aa', 'fontSize': '0.75rem', 'fontWeight': '500'}),
                     html.Table([
                         html.Tr([
-                            html.Td(html.I(className="fas fa-dollar-sign text-success"), style={'width': '40px'}),
-                            html.Td("Total Revenue"),
+                            html.Td("Revenue", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_is.get('Total Revenue', 0) / 1e9:.2f}B" if pd.notna(latest_is.get('Total Revenue')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
                         html.Tr([
-                            html.Td(html.I(className="fas fa-receipt text-danger")),
-                            html.Td("Cost of Revenue"),
+                            html.Td("Cost of Rev.", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_is.get('Cost Of Revenue', 0) / 1e9:.2f}B" if pd.notna(latest_is.get('Cost Of Revenue')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
                         html.Tr([
-                            html.Td(html.I(className="fas fa-chart-bar text-info")),
-                            html.Td("Gross Profit"),
+                            html.Td("Gross Profit", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_is.get('Gross Profit', 0) / 1e9:.2f}B" if pd.notna(latest_is.get('Gross Profit')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
                         html.Tr([
-                            html.Td(html.I(className="fas fa-wallet text-primary")),
-                            html.Td("Operating Income"),
+                            html.Td("Oper. Income", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_is.get('Operating Income', 0) / 1e9:.2f}B" if pd.notna(latest_is.get('Operating Income')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
                         html.Tr([
-                            html.Td(html.I(className="fas fa-money-check-alt text-success")),
-                            html.Td("Net Income"),
+                            html.Td("Net Income", style={'color': '#71717a'}),
                             html.Td(f"₹{latest_is.get('Net Income', 0) / 1e9:.2f}B" if pd.notna(latest_is.get('Net Income')) else "N/A",
-                                   className="fw-bold text-end")
+                                   className="text-end", style={'color': '#e4e4e7'})
                         ]),
-                    ], className='table table-sm table-hover text-light')
+                    ], className='table table-sm table-hover')
                 ]))
             
             comprehensive_financials.append(html.Div([
-                html.H6([
-                    html.I(className="fas fa-calculator me-2", style={'color': colors['info']}),
-                    "Key Financial Ratios"
-                ], className="fw-bold mb-3 mt-4", style={'color': colors['text']}),
+                html.Span("Key Ratios", style={'color': '#a1a1aa', 'fontSize': '0.75rem', 'fontWeight': '500'}),
                 html.Table([
                     html.Tr([
-                        html.Td(html.I(className="fas fa-percentage text-primary"), style={'width': '40px'}),
-                        html.Td("Profit Margin"),
+                        html.Td("Profit Margin", style={'color': '#71717a'}),
                         html.Td(f"{info.get('profitMargins', 0) * 100:.2f}%" if info.get('profitMargins') else "N/A",
-                               className="fw-bold text-end")
+                               className="text-end", style={'color': '#e4e4e7'})
                     ]),
                     html.Tr([
-                        html.Td(html.I(className="fas fa-chart-area text-success")),
-                        html.Td("Operating Margin"),
+                        html.Td("Oper. Margin", style={'color': '#71717a'}),
                         html.Td(f"{info.get('operatingMargins', 0) * 100:.2f}%" if info.get('operatingMargins') else "N/A",
-                               className="fw-bold text-end")
+                               className="text-end", style={'color': '#e4e4e7'})
                     ]),
                     html.Tr([
-                        html.Td(html.I(className="fas fa-coins text-warning")),
-                        html.Td("Return on Assets"),
+                        html.Td("ROA", style={'color': '#71717a'}),
                         html.Td(f"{info.get('returnOnAssets', 0) * 100:.2f}%" if info.get('returnOnAssets') else "N/A",
-                               className="fw-bold text-end")
+                               className="text-end", style={'color': '#e4e4e7'})
                     ]),
                     html.Tr([
-                        html.Td(html.I(className="fas fa-hand-holding-usd text-info")),
-                        html.Td("Return on Equity"),
+                        html.Td("ROE", style={'color': '#71717a'}),
                         html.Td(f"{info.get('returnOnEquity', 0) * 100:.2f}%" if info.get('returnOnEquity') else "N/A",
-                               className="fw-bold text-end")
+                               className="text-end", style={'color': '#e4e4e7'})
                     ]),
                     html.Tr([
-                        html.Td(html.I(className="fas fa-balance-scale text-danger")),
-                        html.Td("Debt to Equity"),
+                        html.Td("D/E Ratio", style={'color': '#71717a'}),
                         html.Td(f"{info.get('debtToEquity', 0):.2f}" if info.get('debtToEquity') else "N/A",
-                               className="fw-bold text-end")
+                               className="text-end", style={'color': '#e4e4e7'})
                     ]),
                     html.Tr([
-                        html.Td(html.I(className="fas fa-tint text-primary")),
-                        html.Td("Current Ratio"),
+                        html.Td("Current Ratio", style={'color': '#71717a'}),
                         html.Td(f"{info.get('currentRatio', 0):.2f}" if info.get('currentRatio') else "N/A",
-                               className="fw-bold text-end")
+                               className="text-end", style={'color': '#e4e4e7'})
                     ]),
-                ], className='table table-sm table-hover text-light')
+                ], className='table table-sm table-hover')
             ]))
             
             comprehensive_financials_data = html.Div(comprehensive_financials)
@@ -1524,10 +1294,9 @@ def update_stock_info(analyze_clicks, refresh_clicks, n_intervals, stock_ticker,
 
     except Exception as e:
         error_msg = str(e)
-        error_details = html.Div([
-            html.I(className="fas fa-exclamation-triangle text-danger me-2"),
-            html.Span(f"Error: {error_msg}")
-        ])
+        error_details = html.Div(
+            f"Error: {error_msg}", style={'color': '#ef4444', 'fontSize': '0.8rem'}
+        )
 
         return (
             error_details, "", "", "",
@@ -1546,9 +1315,7 @@ def update_stock_info(analyze_clicks, refresh_clicks, n_intervals, stock_ticker,
     [Input("refresh-button", "n_clicks")]
 )
 def update_refresh_text(n_clicks):
-    if n_clicks and n_clicks > 0:
-        return [html.I(className="fas fa-sync-alt me-2"), "Refresh Data"]
-    return [html.I(className="fas fa-sync-alt me-2"), "Refresh Data"]
+    return "Refresh"
 
 
 if __name__ == '__main__':
